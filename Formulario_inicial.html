@@ -1,0 +1,2737 @@
+<html lang="es">
+
+<head>
+
+    <!-- favicon de la página -->
+    <link rel="shortcut icon" href="/static/core/image/fav.ico" />
+    <!-- metas importantes -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- titulo de la página -->
+    <title> Completar solicitud</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+    <script type="text/javascript"
+        src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YNa4q_Rhqa0XE2cSpwOoxRfVgJhGW6daS0H7a4ZTTs-UczKFUB8k9FerCX0p7KeoVRJHCq6YCCkQTuIU8WTVvQxrGiccVVFbCJo5UCbAmQU"
+        charset="UTF-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="/static/core/css/bootstrap-select.css" rel="stylesheet">
+    <link href="/static/core/css/sweetalert2.min.css" rel="stylesheet">
+    <script src="/static/core/js/moment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- ESTILOS PROPIOS Y PRINCIPAL SIU -->
+
+    <style>
+        /* LIGHT */
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: url('/static/core/fonts/SFProDisplay-Light.ttf') format('truetype');
+            font-style: normal !important;
+            font-weight: 300;
+        }
+
+        /* REGULAR */
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: url('/static/core/fonts/SFProDisplay-Regular.ttf') format('truetype');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        /* BOLD */
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: url('/static/core/fonts/SFProDisplay-Bold.ttf') format('truetype');
+            font-style: normal;
+            font-weight: 700;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="./frontedbsolicitud.css">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- DATATABLES CSS -->
+    <link rel="stylesheet" type="text/css" href="./datatables1.css">
+    <link rel="stylesheet" type="text/css" href="./datatables2.css">
+    <link rel="stylesheet" type="text/css" href="./datatables3.css">
+    <link rel="stylesheet" type="text/css" href="./datatables4.css">
+    <!-- DATATABLES JS -->
+    <script type="text/javascript" src="/datatables1.js"></script>
+    <script type="text/javascript" src="/datatables2.js"></script>
+    <script type="text/javascript" src="/datatables3.js"></script>
+    <script type="text/javascript" src="/datatables4.js"></script>
+    <script type="text/javascript" src="/datatables5.js"></script>
+    <script src="/datatables6.js"></script>
+
+    <!-- LINK PARA LA CUESTION RESPONSIVA DE DATTABLES-->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css" />
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600|Open+Sans:300,400,600" rel="stylesheet">
+
+    <!-- EXTRAS -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <script type="text/javascript" src="/static/core/js/intlTelInput.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/core/css/intlTelInput.css" />
+
+    <!-- COLOR PICKER -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.4.0/css/bootstrap-colorpicker.css"
+        integrity="sha512-HcfKB3Y0Dvf+k1XOwAD6d0LXRFpCnwsapllBQIvvLtO2KMTa0nI5MtuTv3DuawpsiA0ztTeu690DnMux/SuXJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.4.0/js/bootstrap-colorpicker.min.js"
+        integrity="sha512-94dgCw8xWrVcgkmOc2fwKjO4dqy/X3q7IjFru6MHJKeaAzCvhkVtOS6S+co+RbcZvvPBngLzuVMApmxkuWZGwQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- FUNCIONES GENERALES -->
+    <script type="text/javascript" src="/static/core/js/index.js?20230827236666333"></script>
+    <script type="text/javascript"
+        src="/static/core/js/solicitud_render_completar_solicitud.js?66666776522333"></script>
+
+    <!-- LIBRERIA TABULATOR -->
+    <link href="https://unpkg.com/tabulator-tables@5.3.4/dist/css/tabulator_bootstrap4.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.3.4/dist/js/tabulator.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="ventana_modal" class="modal fade" role="dialog"></div>
+    <div id="ventana_modal_new" class="modal fade"></div>
+    <div class="dashboard"> <!-- CUERPO -->
+
+
+        <div class="dashboard-nav custom-scrollbar"> <!-- CUERPO NAVBAR -->
+            <!-- NAVBAR PRINCIPAL -->
+            <header class="dashboard-header">
+                <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                <a href="/"><img height="50px" src="logo-login.png" class="mCS_img_loaded"></a>
+            </header>
+            <!-- NAVBAR LATERAL -->
+
+            <nav class="dashboard-nav-list">
+                <a href="/">
+                    <div class="btn-home mt-4 dashboard-nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                            stroke="currentColor">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1.9591 11.4838V18.3038C1.89673 20.9868 4.01992 23.2132 6.70297 23.2781H17.7705C20.4536 23.2132 22.5768 20.9868 22.5144 18.3038V11.4838C22.5175 9.4715 21.5787 7.57378 19.9773 6.35522L15.4845 3.63164C13.4886 2.41934 10.9836 2.41934 8.98753 3.63164L4.49621 6.35522C2.89488 7.57378 1.95606 9.4715 1.9591 11.4838Z"
+                                stroke-width="1.52941" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M15.3991 17.6736C14.6578 18.6771 13.4843 19.2693 12.2366 19.2693C10.989 19.2693 9.81529 18.6771 9.07397 17.6736"
+                                stroke-width="1.52941" stroke-linecap="round" />
+                        </svg>
+                        Dashboard
+                    </div>
+                </a>
+
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-user-lock "></i>Admin</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /outbox/mailingstatus/ " class="dashboard-nav-dropdown-item">Estatus correos</a><a
+                            href=" /registration/ver_grupo/ " class="dashboard-nav-dropdown-item">Grupos</a><a
+                            href=" /usuario/limpiar_lastlogin " class="dashboard-nav-dropdown-item">Limpiar login</a><a
+                            href=" /registration/usuarios/ " class="dashboard-nav-dropdown-item">Usuarios</a>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-toolbox "></i>Ajustes</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /archivos_masivos/ " class="dashboard-nav-dropdown-item">Archivos Masivos</a>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" far fa-file-alt "></i>Documentación</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /documentacion/altas " class="dashboard-nav-dropdown-item">Alta documentos</a><a
+                            href=" /documentacion/documentos/busqueda " class="dashboard-nav-dropdown-item">Buscar
+                            documentos</a><a href=" /documentacion/estado_documento "
+                            class="dashboard-nav-dropdown-item">Estado documentos</a><a
+                            href=" /documentacion/lista_verificacion " class="dashboard-nav-dropdown-item">Lista de
+                            verificación</a>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-bullhorn "></i>InConcert</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /inconcert/actualizacion_manual/ " class="dashboard-nav-dropdown-item">Actualización
+                            manual</a><a href=" /inconcert/asignacion_usuario/ "
+                            class="dashboard-nav-dropdown-item">Asignación de usuarios</a><a
+                            href=" /inconcert/catalogo/grupo/ " class="dashboard-nav-dropdown-item">Grupos</a><a
+                            href=" /inconcert/catalogo/nivel/ " class="dashboard-nav-dropdown-item">Niveles</a><a
+                            href=" /inconcert/catalogo/pais/ " class="dashboard-nav-dropdown-item">Paises</a>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-folder-open "></i>Inscripción</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /inscripcion/buscar_solicitud/ " class="dashboard-nav-dropdown-item">Buscar
+                            Solicitud</a><a href=" /inscripcion/crear_solicitud/ "
+                            class="dashboard-nav-dropdown-item">Crear Solicitud</a><a href=" /pagos/pronto_pago "
+                            class="dashboard-nav-dropdown-item">Pronto pago</a>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-paper-plane "></i>Integraciones</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /view_alumno_academia/ " class="dashboard-nav-dropdown-item">Academia Alumno</a><a
+                            href=" /view_profesor_academia/ " class="dashboard-nav-dropdown-item">Academia
+                            Profesor</a><a href=" /view_datocliente " class="dashboard-nav-dropdown-item">Dato
+                            cliente</a><a href=" /view_postulante " class="dashboard-nav-dropdown-item">Postulante</a><a
+                            href=" /view_saldos " class="dashboard-nav-dropdown-item">Saldos</a>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-box-open "></i>Paquetes</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /paquete/buscar_paquete/ " class="dashboard-nav-dropdown-item">Buscar Paquete</a><a
+                            href=" /paquete/registrar_paquete/ " class="dashboard-nav-dropdown-item">Configurar
+                            Paquetes</a>
+                    </div>
+                </div>
+                <a href=" /fronted_theme/theme " class="dashboard-nav-item"><i
+                        class=" fas fa-palette "></i>Plantilla</a>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-chart-line "></i>Reportes</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <div class='dashboard-nav-dropdown menu_hijo'>
+                            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                                    class=" fas fa-wallet fa-xs"></i>Finanzas</a>
+                            <div class='dashboard-nav-dropdown-menu'>
+                                <a href=" /reporteador/reporte_pagos " class="dashboard-nav-dropdown-item">Pagos</a><a
+                                    href=" /reporteador/reporte_ventas " class="dashboard-nav-dropdown-item">Ventas
+                                    Inscripción</a>
+                            </div>
+                        </div>
+                        <div class='dashboard-nav-dropdown menu_hijo'>
+                            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                                    class=" fas fa-school fa-xs"></i>SER</a>
+                            <div class='dashboard-nav-dropdown-menu'>
+                                <a href=" /reporteador/reporte_campos_solicitud "
+                                    class="dashboard-nav-dropdown-item">Campos Solicitud</a><a
+                                    href=" /reporteador/documentos "
+                                    class="dashboard-nav-dropdown-item">Documentos</a><a
+                                    href=" /reporteador/reporte_ventas " class="dashboard-nav-dropdown-item">Ventas
+                                    Inscripción</a>
+                            </div>
+                        </div>
+                        <div class='dashboard-nav-dropdown menu_hijo'>
+                            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                                    class=" fas fa-chalkboard-teacher fa-xs"></i>Tutoría</a>
+                            <div class='dashboard-nav-dropdown-menu'>
+                                <a href=" /reporteador/documentos " class="dashboard-nav-dropdown-item">Documentos</a><a
+                                    href=" /reporteador/reporte_ventas " class="dashboard-nav-dropdown-item">Ventas
+                                    Inscripción</a>
+                            </div>
+                        </div>
+                        <div class='dashboard-nav-dropdown menu_hijo'>
+                            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                                    class=" fas fa-money-check-alt fa-xs"></i>Ventas</a>
+                            <div class='dashboard-nav-dropdown-menu'>
+                                <a href=" /reporteador/reporte_campos_solicitud "
+                                    class="dashboard-nav-dropdown-item">Campos Solicitud</a><a
+                                    href=" /reporteador/documentos "
+                                    class="dashboard-nav-dropdown-item">Documentos</a><a
+                                    href=" /reporteador/reporte_solicitud_completa "
+                                    class="dashboard-nav-dropdown-item">Solicitud Completa</a><a
+                                    href=" /reporteador/reporte_ventas " class="dashboard-nav-dropdown-item">Ventas
+                                    Inscripción</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-key "></i>Sistema</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /paquete/registrar_campus_canal/ " class="dashboard-nav-dropdown-item">Administrar
+                            Campus/Canal</a>
+                        <div class='dashboard-nav-dropdown menu_hijo'>
+                            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                                    class=" far fa-list-alt fa-xs"></i>Catálogos</a>
+                            <div class='dashboard-nav-dropdown-menu'>
+                                <a href=" /inscripcion/ver_ptrm/ " class="dashboard-nav-dropdown-item"> Partes de
+                                    periodo</a><a href=" /institucion/ver_accesorios/ "
+                                    class="dashboard-nav-dropdown-item">Accesorios</a><a
+                                    href=" /institucion/ver_campus/ " class="dashboard-nav-dropdown-item">Campus</a><a
+                                    href=" /institucion/ver_canales/ " class="dashboard-nav-dropdown-item">Canales</a><a
+                                    href=" /inscripcion/ver_so_term/ " class="dashboard-nav-dropdown-item">Configuración
+                                    partes de periodo</a><a href=" /institucion/ver_exencion/ "
+                                    class="dashboard-nav-dropdown-item">Excención</a><a
+                                    href=" /institucion/ver_facultad/ "
+                                    class="dashboard-nav-dropdown-item">Facultad</a><a href=" /institucion/ver_filial/ "
+                                    class="dashboard-nav-dropdown-item">Filial</a><a
+                                    href=" /inscripcion/ver_inicio_clases/ " class="dashboard-nav-dropdown-item">Inicio
+                                    Clases</a><a href=" /institucion/ver_jornada/ "
+                                    class="dashboard-nav-dropdown-item">Jornada</a><a
+                                    href=" /institucion/ver_modalidad/ "
+                                    class="dashboard-nav-dropdown-item">Modalidad</a><a
+                                    href=" /institucion/ver_niveles/ " class="dashboard-nav-dropdown-item">Niveles</a><a
+                                    href=" /solicitud/opciones_campo " class="dashboard-nav-dropdown-item">Opciones de
+                                    campos de la solicitud</a><a href=" /inscripcion/ver_periodo/ "
+                                    class="dashboard-nav-dropdown-item">Periodos</a><a
+                                    href=" /institucion/ver_programas/ "
+                                    class="dashboard-nav-dropdown-item">Programas</a><a href=" /institucion/ver_rate/ "
+                                    class="dashboard-nav-dropdown-item">Rate</a><a href=" /institucion/ver_reglas/ "
+                                    class="dashboard-nav-dropdown-item">Reglas de Cobro</a><a
+                                    href=" /inscripcion/tipo_admision " class="dashboard-nav-dropdown-item">Tipo de
+                                    admisión</a><a href=" /inscripcion/tipo_alumno "
+                                    class="dashboard-nav-dropdown-item">Tipo de alumno</a>
+                            </div>
+                        </div><a href=" /parametrizadores/ " class="dashboard-nav-dropdown-item">Parametrizadores</a>
+                    </div>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                            class=" fas fa-paste "></i>Solicitud</a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href=" /solicitud/solicitud_root/ " class="dashboard-nav-dropdown-item">Configurar
+                            Solicitud</a>
+                    </div>
+                </div>
+
+            </nav>
+        </div> <!-- FIN CUERPO NAVBAR -->
+
+        <div class='dashboard-app'>
+
+            <header class='dashboard-toolbar d-flex'>
+
+                <a href="#!" class="menu-toggle">
+
+                    <div class="container">
+                        <div class="row welcome_text">Bienvenido,<img class="welcome_img"
+                                src="/static/core/icons/welcome.png"></div>
+                        <div class="row font-weight-bold name_text">JEFERSON</div>
+                    </div>
+                </a>
+
+                <div class="ml-auto">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row font-weight-bold name_text">JEFERSON.BARRETO</div>
+
+                                <div class="row welcome_text">VENTAS-AGENTE - VENTAS</div>
+
+                            </div>
+                            <div class="col">
+
+                                <a class="menu-salir" href="/usuario/logout/">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor">
+                                        <g clip-path="url(#clip0_19_200)">
+                                            <path
+                                                d="M10 8V6C10 5.46957 10.2107 4.96086 10.5858 4.58579C10.9609 4.21071 11.4696 4 12 4H19C19.5304 4 20.0391 4.21071 20.4142 4.58579C20.7893 4.96086 21 5.46957 21 6V18C21 18.5304 20.7893 19.0391 20.4142 19.4142C20.0391 19.7893 19.5304 20 19 20H12C11.4696 20 10.9609 19.7893 10.5858 19.4142C10.2107 19.0391 10 18.5304 10 18V16"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M15 12H3L6 9" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M6 15L3 12" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_19_200">
+                                                <rect width="24" height="24" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    Cerrar Sesión
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class='dashboard-content'>
+                <!-- CONTENIDO -->
+
+                <div class="container-fluid">
+                    <div class="row form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-bottom border-secondary">
+                            <h4 class="font-weight-bold text-principal">Solicitud de admisión</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="my-3 p-3 bg-body rounded shadow">
+                        <div class="p-2 details-student">
+                            <h3 class="lead font-weight-bold">Importar solicitud de CRM</h3>
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-4 col-sm-12">
+                                    <input type="text" id="id_crm" class="form-control">
+                                    <input type="hidden" id="id_id_crm2" value=>
+                                </div>
+                                <div class="col-md-8 col-sm-12 mt-sm-0 mt-2">
+                                    <input id="busca_crm" type="button" class="btn btn-custom" value="Importar"
+                                        onclick="get_data_crm();">
+                                    <input id="limpia_crm" type="button" class="btn btn-custom-sec"
+                                        onclick="clearcrm();" value="Limpiar">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12" id="msg_error_crm"></div>
+                            </div>
+                        </div>
+                        <!-- **************************************************************************
+			Datos de captura
+		****************************************************************************-->
+                        <div id="cargando" class="marco">
+                            <div id="logo_cargando">
+
+                            </div>
+                        </div>
+                        <div id="error"></div>
+                        <div id="no_e" class='marco'>
+                            <div id="no_encontrado"></div>
+                        </div>
+                        <div id="inscripcion">
+                            <input type="hidden" id="id_inscripcion" value="" />
+                        </div>
+                        <div class="p-2 details-student mt-3">
+                            <form id="datos_usuario" method="post" action="" class="needs-validation" novalidate><input
+                                    type="hidden" name="csrfmiddlewaretoken"
+                                    value="wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh">
+                                <input type="hidden" name="cancelado" id="cancelado">
+                                <div class="divTable busquedaCRM">
+                                    <h3 class="lead font-weight-bold mb-2">Datos de la solicitud</h3>
+                                </div>
+                                <fieldset class="oculta">
+                                    <legend>
+                                        <h3 class="lead font-weight-bold mb-2 titulo-etiqueta">Datos personales</h3>
+                                    </legend>
+                                    <!-- INICIO DE CAMBIOS -->
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Primer nombre <span class="text-danger">*</span> </label>
+                                            <input type="text" name="primer_nombre" class="form-control"
+                                                onkeypress="solo_texto()" required id="id_primer_nombre">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Segundo nombre </label>
+                                            <input type="text" name="segundo_nombre" class="form-control"
+                                                onkeypress="solo_texto()" id="id_segundo_nombre">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Apellido Paterno <span class="text-danger">*</span></label>
+                                            <input type="text" name="apellido_paterno" class="form-control"
+                                                onkeypress="solo_texto()" required id="id_apellido_paterno">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Apellido Materno<span class="text-danger"></span></label>
+                                            <input type="text" name="apellido_materno" class="form-control"
+                                                onkeypress="solo_texto()" id="id_apellido_materno">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Genero <span class="text-danger">*</span></label>
+                                            <select name="genero" required class="form-control" id="id_genero">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">FEMENINO</option>
+
+                                                <option value="2">MASCULINO</option>
+
+                                                <option value="3">OTRO</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Fecha Nacimiento <span class="text-danger">*</span></label>
+                                            <input type="date" name="fecha_nacimiento" required max="2008-12-04"
+                                                min="1953-12-18" class="form-control" id="id_fecha_nacimiento">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Tipo documento identidad <span class="text-danger">*</span></label>
+                                            <select name="tipo_identificacion" class="form-control" required
+                                                id="id_tipo_identificacion">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">1 || DOCUMENTO NACIONAL IDENTIDAD</option>
+
+                                                <option value="2">2 || RUT</option>
+
+                                                <!-- <option value="3">6 || PASAPORTE</option>
+
+  <option value="4">9 || PARTIDA DE NACIMIENTO</option>
+
+  <option value="5">8 || PERMISO TEMPORAL DE PERMANENCIA</option> -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>No documento identidad <span class="text-danger">*</span></label>
+                                            <input type="text" name="identidad" required maxLength="18" maxlength="40"
+                                                class="form-control" id="id_identidad">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Correo <span class="text-danger">*</span></label>
+                                            <input type="email" name="correo" class="form-control"
+                                                onkeypress="veri_mail(this.value,&quot;error_id_correo&quot;)" required
+                                                id="id_correo">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Confirma correo <span class="text-danger">*</span></label>
+                                            <input type="email" name="correo_confirmacion" class="form-control"
+                                                onkeypress="veri_mail(this.value,&quot;error_id_correo_confirmacion&quot;)"
+                                                required id="id_correo_confirmacion">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="col-md-4 col-sm-12">
+							<label>Correo alternativo</label>
+							<input type="text" name="correo_alternativo" maxlength="80" class="form-control" onkeypress="veri_mail(this.value,&quot;error_id_correo_alternativo&quot;)" id="id_correo_alternativo">
+							<div class="invalid-feedback">
+								Este campo es requerido
+							</div>
+						</div> -->
+
+                                        <input type="hidden" name="lada_movil" class="form-control" id="id_lada_movil">
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Teléfono Móvil <span class="text-danger">*</span></label>
+                                            <input type="tel" name="telefono_movil" required maxlength="12"
+                                                class="form-control form-control-especial" onkeypress="solo_numeros()"
+                                                id="id_telefono_movil">
+
+                                            <div class="invalid-feedback" id="msg_movil">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label class="tag">Teléfono segundo contacto</label>
+                                            <input type="tel" name="telefono_casa" maxlength="12"
+                                                class="form-control form-control-especial" onkeypress="solo_numeros()"
+                                                id="id_telefono_casa">
+
+                                            <div class="invalid-feedback" id="msg_casa">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <BR></BR>
+                                    <!-- <div class="row">
+                                        <input type="hidden" name="lada_casa" class="form-control" id="id_lada_casa">
+
+
+                                        <div class="col-md-4 col-sm-12">
+                                            <label>Nacionalidad <span class="text-danger">*</span></label>
+                                            <select name="nacionalidad" required class="selectpicker form-control"
+                                                data-show-subtext="true" data-live-search="true"
+                                                title="Seleccione una opción" id="id_nacionalidad">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">1 || BOUVET ISLAND</option>
+
+                                                <option value="2">2 || COTE D IVOIRE</option>
+
+                                                <option value="3">3 || FALKLAND ISLANDS (MALVINAS)</option>
+
+                                                <option value="4">4 || FRANCE, METROPOLITAN</option>
+
+                                                <option value="5">5 || FRENCH SOUTHERN TERRITORIES</option>
+
+                                                <option value="6">6 || HEARD AND MC DONALD ISLANDS</option>
+
+                                                <option value="7">7 || MAYOTTE</option>
+
+                                                <option value="8">8 || SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS
+                                                </option>
+
+                                                <option value="9">9 || SVALBARD AND JAN MAYEN ISLANDS</option>
+
+                                                <option value="10">10 || UNITED STATES MINOR OUTLYING ISLANDS</option>
+
+                                                <option value="11">11 || OTROS PAISES O LUGARES</option>
+
+                                                <option value="12">12 || AFGANISTAN</option>
+
+                                                <option value="13">13 || ALBANIA</option>
+
+                                                <option value="14">14 || ALDERNEY</option>
+
+                                                <option value="15">15 || ALEMANIA</option>
+
+                                                <option value="16">16 || ARMENIA</option>
+
+                                                <option value="17">17 || ARUBA</option>
+
+                                                <option value="18">18 || ASCENCION</option>
+
+                                                <option value="19">19 || BOSNIA-HERZEGOVINA</option>
+
+                                                <option value="20">20 || BURKINA FASO</option>
+
+                                                <option value="21">21 || ANDORRA</option>
+
+                                                <option value="22">22 || ANGOLA</option>
+
+                                                <option value="23">23 || ANGUILLA</option>
+
+                                                <option value="24">24 || ANTIGUA Y BARBUDA</option>
+
+                                                <option value="25">25 || ANTILLAS HOLANDESAS</option>
+
+                                                <option value="26">26 || ARABIA SAUDITA</option>
+
+                                                <option value="27">27 || ARGELIA</option>
+
+                                                <option value="28">28 || ARGENTINA</option>
+
+                                                <option value="29">29 || AUSTRALIA</option>
+
+                                                <option value="30">30 || AUSTRIA</option>
+
+                                                <option value="31">31 || AZERBAIJÁN</option>
+
+                                                <option value="32">32 || BAHAMAS</option>
+
+                                                <option value="33">33 || BAHREIN</option>
+
+                                                <option value="34">34 || BANGLA DESH</option>
+
+                                                <option value="35">35 || BARBADOS</option>
+
+                                                <option value="36">36 || BÉLGICA</option>
+
+                                                <option value="37">37 || BELICE</option>
+
+                                                <option value="38">38 || BERMUDAS</option>
+
+                                                <option value="39">39 || BELARUS</option>
+
+                                                <option value="40">40 || MYANMAR</option>
+
+                                                <option value="41">41 || BOLIVIA</option>
+
+                                                <option value="42">42 || BOTSWANA</option>
+
+                                                <option value="43">43 || BRASIL</option>
+
+                                                <option value="44">44 || BRUNEI DARUSSALAM</option>
+
+                                                <option value="45">45 || BULGARIA</option>
+
+                                                <option value="46">46 || BURUNDI</option>
+
+                                                <option value="47">47 || BUTÁN</option>
+
+                                                <option value="48">48 || CABO VERDE</option>
+
+                                                <option value="49">49 || CAIMÁN, ISLAS</option>
+
+                                                <option value="50">50 || CAMBOYA</option>
+
+                                                <option value="51">51 || CAMERÚN, REPUBLICA UNIDA DEL</option>
+
+                                                <option value="52">52 || CAMPIONE D TALIA</option>
+
+                                                <option value="53">53 || CANADÁ</option>
+
+                                                <option value="54">54 || CANAL (NORMANDAS), ISLAS</option>
+
+                                                <option value="55">55 || CANTÓN Y ENDERBURRY</option>
+
+                                                <option value="56">56 || SANTA SEDE</option>
+
+                                                <option value="57">57 || COCOS (KEELING),ISLAS</option>
+
+                                                <option value="58">58 || COLOMBIA</option>
+
+                                                <option value="59">59 || COMORAS</option>
+
+                                                <option value="60">60 || CONGO</option>
+
+                                                <option value="61">61 || COOK, ISLAS</option>
+
+                                                <option value="62">62 || COREA (NORTE), REPUBLICA POPULAR DEMOCRATICA DE
+                                                </option>
+
+                                                <option value="63">63 || COREA (SUR), REPUBLICA DE</option>
+
+                                                <option value="64">64 || COSTA DE MARFIL</option>
+
+                                                <option value="65">65 || COSTA RICA</option>
+
+                                                <option value="66">66 || CROACIA</option>
+
+                                                <option value="67">67 || CUBA</option>
+
+                                                <option value="68">68 || CHAD</option>
+
+                                                <option value="69">69 || CHECOSLOVAQUIA</option>
+
+                                                <option value="70">70 || CHILE</option>
+
+                                                <option value="71">71 || CHINA</option>
+
+                                                <option value="72">72 || TAIWAN (FORMOSA)</option>
+
+                                                <option value="73">73 || CHIPRE</option>
+
+                                                <option value="74">74 || BENIN</option>
+
+                                                <option value="75">75 || DINAMARCA</option>
+
+                                                <option value="76">76 || DOMINICA</option>
+
+                                                <option value="77">77 || ECUADOR</option>
+
+                                                <option value="78">78 || EGIPTO</option>
+
+                                                <option value="79">79 || EL SALVADOR</option>
+
+                                                <option value="80">80 || ERITREA</option>
+
+                                                <option value="81">81 || EMIRATOS ARABES UNIDOS</option>
+
+                                                <option value="82">82 || ESPAÑA</option>
+
+                                                <option value="83">83 || ESLOVAQUIA</option>
+
+                                                <option value="84">84 || ESLOVENIA</option>
+
+                                                <option value="85">85 || ESTADOS UNIDOS</option>
+
+                                                <option value="86">86 || ESTONIA</option>
+
+                                                <option value="87">87 || ETIOPIA</option>
+
+                                                <option value="88">88 || FEROE, ISLAS</option>
+
+                                                <option value="89">89 || FILIPINAS</option>
+
+                                                <option value="90">90 || FINLANDIA</option>
+
+                                                <option value="91">91 || FRANCIA</option>
+
+                                                <option value="92">92 || GABON</option>
+
+                                                <option value="93">93 || GAMBIA</option>
+
+                                                <option value="94">94 || GAZA Y JERICO</option>
+
+                                                <option value="95">95 || GEORGIA</option>
+
+                                                <option value="96">96 || GHANA</option>
+
+                                                <option value="97">97 || GIBRALTAR</option>
+
+                                                <option value="98">98 || GRANADA</option>
+
+                                                <option value="99">99 || GRECIA</option>
+
+                                                <option value="100">100 || GROENLANDIA</option>
+
+                                                <option value="101">101 || GUADALUPE</option>
+
+                                                <option value="102">102 || GUAM</option>
+
+                                                <option value="103">103 || GUATEMALA</option>
+
+                                                <option value="104">104 || GUAYANA FRANCESA</option>
+
+                                                <option value="105">105 || GUERNSEY</option>
+
+                                                <option value="106">106 || GUINEA</option>
+
+                                                <option value="107">107 || GUINEA ECUATORIAL</option>
+
+                                                <option value="108">108 || GUINEA-BISSAU</option>
+
+                                                <option value="109">109 || GUYANA</option>
+
+                                                <option value="110">110 || HAITI</option>
+
+                                                <option value="111">111 || HONDURAS</option>
+
+                                                <option value="112">112 || HONDURAS BRITANICAS</option>
+
+                                                <option value="113">113 || HONG KONG</option>
+
+                                                <option value="114">114 || HUNGRIA</option>
+
+                                                <option value="115">115 || INDIA</option>
+
+                                                <option value="116">116 || INDONESIA</option>
+
+                                                <option value="117">117 || IRAK</option>
+
+                                                <option value="118">118 || IRAN, REPUBLICA ISLAMICA DEL</option>
+
+                                                <option value="119">119 || IRLANDA (EIRE)</option>
+
+                                                <option value="120">120 || ISLA AZORES</option>
+
+                                                <option value="121">121 || ISLA DEL MAN</option>
+
+                                                <option value="122">122 || ISLANDIA</option>
+
+                                                <option value="123">123 || ISLAS CANARIAS</option>
+
+                                                <option value="124">124 || ISLAS DE CHRISTMAS</option>
+
+                                                <option value="125">125 || ISLAS QESHM</option>
+
+                                                <option value="126">126 || ISRAEL</option>
+
+                                                <option value="127">127 || ITALIA</option>
+
+                                                <option value="128">128 || JAMAICA</option>
+
+                                                <option value="129">129 || JONSTON, ISLAS</option>
+
+                                                <option value="130">130 || JAPON</option>
+
+                                                <option value="131">131 || JERSEY</option>
+
+                                                <option value="132">132 || JORDANIA</option>
+
+                                                <option value="133">133 || KAZAJSTAN</option>
+
+                                                <option value="134">134 || KENIA</option>
+
+                                                <option value="135">135 || KIRIBATI</option>
+
+                                                <option value="136">136 || KIRGUIZISTAN</option>
+
+                                                <option value="137">137 || KUWAIT</option>
+
+                                                <option value="138">138 || LABUN</option>
+
+                                                <option value="139">139 || LAOS, REPUBLICA POPULAR DEMOCRATICA DE
+                                                </option>
+
+                                                <option value="140">140 || LESOTHO</option>
+
+                                                <option value="141">141 || LETONIA</option>
+
+                                                <option value="142">142 || LIBANO</option>
+
+                                                <option value="143">143 || LIBERIA</option>
+
+                                                <option value="144">144 || LIBIA</option>
+
+                                                <option value="145">145 || LIECHTENSTEIN</option>
+
+                                                <option value="146">146 || LITUANIA</option>
+
+                                                <option value="147">147 || LUXEMBURGO</option>
+
+                                                <option value="148">148 || MACAO</option>
+
+                                                <option value="149">149 || MACEDONIA</option>
+
+                                                <option value="150">150 || MADAGASCAR</option>
+
+                                                <option value="151">151 || MADEIRA</option>
+
+                                                <option value="152">152 || MALAYSIA</option>
+
+                                                <option value="153">153 || MALAWI</option>
+
+                                                <option value="154">154 || MALDIVAS</option>
+
+                                                <option value="155">155 || MALI</option>
+
+                                                <option value="156">156 || MALTA</option>
+
+                                                <option value="157">157 || MARIANAS DEL NORTE, ISLAS</option>
+
+                                                <option value="158">158 || MARSHALL, ISLAS</option>
+
+                                                <option value="159">159 || MARRUECOS</option>
+
+                                                <option value="160">160 || MARTINICA</option>
+
+                                                <option value="161">161 || MAURICIO</option>
+
+                                                <option value="162">162 || MAURITANIA</option>
+
+                                                <option value="163">163 || MEXICO</option>
+
+                                                <option value="164">164 || MICRONESIA, ESTADOS FEDERADOS DE</option>
+
+                                                <option value="165">165 || MIDWAY ISLAS</option>
+
+                                                <option value="166">166 || MOLDAVIA</option>
+
+                                                <option value="167">167 || MONGOLIA</option>
+
+                                                <option value="168">168 || MONACO</option>
+
+                                                <option value="169">169 || MONTSERRAT, ISLA</option>
+
+                                                <option value="170">170 || MOZAMBIQUE</option>
+
+                                                <option value="171">171 || NAMIBIA</option>
+
+                                                <option value="172">172 || NAURU</option>
+
+                                                <option value="173">173 || NAVIDAD (CHRISTMAS), ISLA</option>
+
+                                                <option value="174">174 || NEPAL</option>
+
+                                                <option value="175">175 || NICARAGUA</option>
+
+                                                <option value="176">176 || NIGER</option>
+
+                                                <option value="177">177 || NIGERIA</option>
+
+                                                <option value="178">178 || NIUE, ISLA</option>
+
+                                                <option value="179">179 || NORFOLK, ISLA</option>
+
+                                                <option value="180">180 || NORUEGA</option>
+
+                                                <option value="181">181 || NUEVA CALEDONIA</option>
+
+                                                <option value="182">182 || PAPUASIA NUEVA GUINEA</option>
+
+                                                <option value="183">183 || NUEVA ZELANDA</option>
+
+                                                <option value="184">184 || VANUATU</option>
+
+                                                <option value="185">185 || OMAN</option>
+
+                                                <option value="186">186 || PACIFICO, ISLAS DEL</option>
+
+                                                <option value="187">187 || PAISES BAJOS</option>
+
+                                                <option value="188">188 || PAKISTAN</option>
+
+                                                <option value="189">189 || PALAU, ISLAS</option>
+
+                                                <option value="190">190 || TERRITORIO AUTONOMO DE PALESTINA.</option>
+
+                                                <option value="191">191 || PANAMA</option>
+
+                                                <option value="192">192 || PARAGUAY</option>
+
+                                                <option value="193">193 || PERÚ</option>
+
+                                                <option value="194">194 || PITCAIRN, ISLA</option>
+
+                                                <option value="195">195 || POLINESIA FRANCESA</option>
+
+                                                <option value="196">196 || POLONIA</option>
+
+                                                <option value="197">197 || PORTUGAL</option>
+
+                                                <option value="198">198 || PUERTO RICO</option>
+
+                                                <option value="199">199 || QATAR</option>
+
+                                                <option value="200">200 || REINO UNIDO</option>
+
+                                                <option value="201">201 || ESCOCIA</option>
+
+                                                <option value="202">202 || REPUBLICA ARABE UNIDA</option>
+
+                                                <option value="203">203 || REPUBLICA CENTROAFRICANA</option>
+
+                                                <option value="204">204 || REPUBLICA CHECA</option>
+
+                                                <option value="205">205 || REPUBLICA DE SWAZILANDIA</option>
+
+                                                <option value="206">206 || REPUBLICA DE TUNEZ</option>
+
+                                                <option value="207">207 || REPUBLICA DOMINICANA</option>
+
+                                                <option value="208">208 || REUNION</option>
+
+                                                <option value="209">209 || ZIMBABWE</option>
+
+                                                <option value="210">210 || RUMANIA</option>
+
+                                                <option value="211">211 || RUANDA</option>
+
+                                                <option value="212">212 || RUSIA</option>
+
+                                                <option value="213">213 || SALOMON, ISLAS</option>
+
+                                                <option value="214">214 || SAHARA OCCIDENTAL</option>
+
+                                                <option value="215">215 || SAMOA OCCIDENTAL</option>
+
+                                                <option value="216">216 || SAMOA NORTEAMERICANA</option>
+
+                                                <option value="217">217 || SAN CRISTOBAL Y NIEVES</option>
+
+                                                <option value="218">218 || SAN MARINO</option>
+
+                                                <option value="219">219 || SAN PEDRO Y MIQUELON</option>
+
+                                                <option value="220">220 || SAN VICENTE Y LAS GRANADINAS</option>
+
+                                                <option value="221">221 || SANTA ELENA</option>
+
+                                                <option value="222">222 || SANTA LUCIA</option>
+
+                                                <option value="223">223 || SANTO TOME Y PRINCIPE</option>
+
+                                                <option value="224">224 || SENEGAL</option>
+
+                                                <option value="225">225 || SEYCHELLES</option>
+
+                                                <option value="226">226 || SIERRA LEONA</option>
+
+                                                <option value="227">227 || SINGAPUR</option>
+
+                                                <option value="228">228 || SIRIA, REPUBLICA ARABE DE</option>
+
+                                                <option value="229">229 || SOMALIA</option>
+
+                                                <option value="230">230 || SRI LANKA</option>
+
+                                                <option value="231">231 || SUDAFRICA, REPUBLICA DE</option>
+
+                                                <option value="232">232 || SUDAN</option>
+
+                                                <option value="233">233 || SUECIA</option>
+
+                                                <option value="234">234 || SUIZA</option>
+
+                                                <option value="235">235 || SURINAM</option>
+
+                                                <option value="236">236 || SAWSILANDIA</option>
+
+                                                <option value="237">237 || TADJIKISTAN</option>
+
+                                                <option value="238">238 || TAILANDIA</option>
+
+                                                <option value="239">239 || TANZANIA, REPUBLICA UNIDA DE</option>
+
+                                                <option value="240">240 || DJIBOUTI</option>
+
+                                                <option value="241">241 || TERRITORIO ANTARTICO BRITANICO</option>
+
+                                                <option value="242">242 || TERRITORIO BRITANICO DEL OCEANO INDICO
+                                                </option>
+
+                                                <option value="243">243 || TIMOR DEL ESTE</option>
+
+                                                <option value="244">244 || TOGO</option>
+
+                                                <option value="245">245 || TOKELAU</option>
+
+                                                <option value="246">246 || TONGA</option>
+
+                                                <option value="247">247 || TRINIDAD Y TOBAGO</option>
+
+                                                <option value="248">248 || TRISTAN DA CUNHA</option>
+
+                                                <option value="249">249 || TUNICIA</option>
+
+                                                <option value="250">250 || TURCAS Y CAICOS, ISLAS</option>
+
+                                                <option value="251">251 || TURKMENISTAN</option>
+
+                                                <option value="252">252 || TURQUIA</option>
+
+                                                <option value="253">253 || TUVALU</option>
+
+                                                <option value="254">254 || UCRANIA</option>
+
+                                                <option value="255">255 || UGANDA</option>
+
+                                                <option value="256">256 || URSS</option>
+
+                                                <option value="257">257 || URUGUAY</option>
+
+                                                <option value="258">258 || UZBEKISTAN</option>
+
+                                                <option value="259">259 || VENEZUELA</option>
+
+                                                <option value="260">260 || VIET NAM</option>
+
+                                                <option value="261">261 || VIETNAM (DEL NORTE)</option>
+
+                                                <option value="262">262 || VIRGENES, ISLAS (BRITANICAS)</option>
+
+                                                <option value="263">263 || VIRGENES, ISLAS (NORTEAMERICANAS)</option>
+
+                                                <option value="264">264 || FIJI</option>
+
+                                                <option value="265">265 || WAKE, ISLA</option>
+
+                                                <option value="266">266 || WALLIS Y FORTUNA, ISLAS</option>
+
+                                                <option value="267">267 || YEMEN</option>
+
+                                                <option value="268">268 || YUGOSLAVIA</option>
+
+                                                <option value="269">269 || ZAIRE</option>
+
+                                                <option value="270">270 || ZAMBIA</option>
+
+                                                <option value="271">271 || ZONA DEL CANAL DE PANAMA</option>
+
+                                                <option value="272">272 || ZONA LIBRE OSTRAVA</option>
+
+                                                <option value="273">273 || ZONA NEUTRAL (PALESTINA)</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label class="tag">Estado Civil</label>
+                                            <select name="tipo_identificacion" class="form-control" required
+                                                id="id_tipo_identificacion">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">1 ||SOLTERO</option>
+
+                                                <option value="2">2 || CASADO</option> -->
+
+                                                <!-- <option value="3">6 || PASAPORTE</option>
+                              
+                                <option value="4">9 || PARTIDA DE NACIMIENTO</option>
+                              
+                                <option value="5">8 || PERMISO TEMPORAL DE PERMANENCIA</option> -->
+
+                                            <!-- </select>
+                                            <div class="invalid-feedback" id="msg_casa">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+
+                                    </div> -->
+
+                                    <!-- FIN DE CAMBIOS -->
+                                </fieldset>
+
+                                <fieldset class="oculta">
+                                    <legend>
+                                        <h3 class="lead font-weight-bold mt-2 mb-2 titulo-etiqueta">Datos de Dirección
+                                        </h3>
+                                    </legend>
+                                    <!-- INICIO DE CAMBIOS -->
+                                    <div class="row">
+                                        <!-- <div class="col-md-4 col-sm-12">
+                                            <label>Tipo Alumno<span class="text-danger">*</span></label>
+                                            <select name="tipo_alumno" required class="form-control mb-1"
+                                                id="id_tipo_alumno">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="15">PV || PRIMERA VEZ</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>País<span class="text-danger">*</span></label>
+                                            <select name="campus" required
+                                                onchange="carga_combos(&quot;id_nivel&quot;,&quot;niveles&quot;, [this.value,&quot;NO&quot;], [&quot;id_niveles__clave&quot;, &quot;id_niveles__descripcion&quot;] );"
+                                                class="form-control mb-1" id="id_campus">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">CL || CHILE</option>
+
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Estado<span class="text-danger">*</span>
+                                                <span id="id_nivel_loading"></span>
+                                            </label>
+                                            <select name="nivel" required
+                                                onchange="carga_combos(&quot;id_programa&quot;, &quot;programas&quot;, [id_campus.value,this.value, &quot;NO&quot;], [&quot;clave&quot;, &quot;descripcion&quot;] ); "
+                                                class="selectpicker form-control" data-live-search="true"
+                                                title="Seleccione una opción" id="id_nivel">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">LOS LAGOS</option>
+
+                                                <option value="2">LOS RIOS</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>Delegación<span class="text-danger">*</span></label>
+                                            <select name="tipo_admision" required class="form-control mb-1"
+                                                id="id_tipo_admision">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="29">PA || PALERNA</option>
+                                                <option value="29">OS || OSORNO</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Codigo Postal<span class="text-danger">*</span>
+                                                <span id="id_programa_loading"></span>
+                                            </label>
+                                            <select name="programa" required
+                                                onchange="carga_combos(&quot;id_periodo&quot;,&quot;periodos&quot;, [id_campus.value,id_nivel.value,&quot;SI&quot;], [&quot;clave&quot;, &quot;descripcion&quot;] ); autocompleta_facultad(this.value,&quot;id_facultad&quot;)"
+                                                class="selectpicker form-control" data-show-subtext="true"
+                                                data-live-search="true" title="Seleccione una opción" id="id_programa">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="53VT-2500000">5290000</option>
+                                        
+                                                <option value="53VV-2400000">5350000</option>
+                                            
+                                                <option value="53FE-2500000">5360000</option>
+                                            
+                                                <option value="53U3-2600000">5370000</option>
+                                            
+                                                <option value="53MW-2500000">5380000</option>
+                                            
+                                                <option value="53AI-2400000">5390000</option>
+<!--  -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Modalidad<span class="text-danger">*</span>
+                                                <span id="id_modalidad_loading"></span>
+                                            </label>
+                                            <select name="modalidad" required class="form-control mb-1"
+                                                id="id_modalidad">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">1 || EXAMEN DE ADMISION</option>
+
+                                                <option value="2">5 || PRIMEROS PUESTOS</option>
+
+                                                <option value="3">D || TERCIO SUPERIOR</option>
+
+                                                <option value="4">F || GRADUADOS O TITULADOS</option>
+
+                                                <option value="5">H || REGULAR</option>
+
+                                                <option value="6">T || GRADUADO UCSS</option>
+
+                                                <option value="8">O || CENTRO-PRE INGRESO CONTINUO</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+
+                                        <!-- <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Facultad<span class="text-danger">*</span>
+                                                <span id="id_facultad_loading"></span>
+                                            </label>
+                                            <select name="facultad" required class="form-control mb-1" id="id_facultad">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">A || CIENCIAS ECONOMICAS Y COMERCIALES</option>
+
+                                                <option value="2">B || CIENCIAS DE LA EDUCACION Y HUMANIDADES</option>
+
+                                                <option value="3">C || CIENCIAS DE LA SALUD</option>
+
+                                                <option value="4">D || INGENIERIA</option>
+
+                                                <option value="5">E || INGENIERIA AGRARIA</option>
+
+                                                <option value="6">G || DERECHO Y CIENCIAS POLITICAS</option>
+
+                                                <option value="7">F || ESCUELA DE POSGRADO</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Colonia<span class="text-danger">*</span>
+                                                <span id="id_periodo_loading"></span>
+                                            </label>
+                                            <select name="periodo" required
+                                                onchange="carga_combos(&quot;id_inicio_clases&quot;,&quot;inicio_clases&quot;,[id_campus.value,id_nivel.value,id_programa.value,this.value,&quot;SI&quot;], [&quot;fecha_inicio&quot;, &quot;fecha_fin&quot;])"
+                                                class="selectpicker form-control" data-show-subtext="true"
+                                                data-live-search="true" title="Seleccione una opción" id="id_periodo">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">OS | OSORNO
+                                                </option>
+
+                                                <!-- <option value="2">P1 || 04/12/2023 - 03/06/2024 || 01 || VENTAS</option>
+
+                                                <option value="3">2023 || 04/12/2023 - 03/06/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="4">20230 || 11/12/2023 - 22/04/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="5">20232B || 11/12/2023 - 22/04/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="6">20232C || 04/12/2023 - 03/06/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="7">20241A || 02/01/2024 - 02/04/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="8">20241A || 02/01/2024 - 02/04/2024 || 01 || VENTAS
+                                                </option> -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Ciudad<span class="text-danger">*</span>
+                                                <span id="id_inicio_clases_loading"></span>
+                                            </label>
+                                            <input type="text" name="identidad" required maxLength="18" maxlength="40"
+                                                class="form-control" id="id_identidad">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Calle<span class="text-danger">*</span>
+                                                <span id="id_plan_descuentos_loading"></span>
+                                            </label>
+                                            <input type="text" name="identidad" required maxLength="18" maxlength="40"
+                                            class="form-control" id="id_identidad">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                N° Interior<span class="text-danger">*</span>
+                                                <span id="id_jornada_loading"></span>
+                                            </label>
+                                            <input type="text" name="identidad" required maxLength="18" maxlength="40"
+                                            class="form-control" id="id_identidad">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                N° Exterior<span class="text-danger">*</span>
+                                                <span id="id_jornada_loading"></span>
+                                            </label>
+                                            <input type="text" name="identidad" required maxLength="18" maxlength="40"
+                                            class="form-control" id="id_identidad">
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        
+
+                                        <!-- <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Filial<span class="text-danger">*</span>
+                                                <span id="id_filial_loading"></span>
+                                            </label>
+                                            <select name="filial" required class="form-control mb-1" id="id_filial">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">01 || LIMA: LOS OLIVOS</option>
+
+                                                <option value="2">02 || FILIAL HUAURA: HUACHO, VEGUETA</option>
+
+                                                <option value="3">03 || FILIAL ATALAYA</option>
+
+                                                <option value="4">04 || FILIAL RIOJA: NUEVA CAJAMARCA</option>
+
+                                                <option value="5">05 || FILIAL TARMA</option>
+
+                                                <option value="6">06 || FILIAL MORROPON: CHULUCANAS</option>
+
+                                                <option value="7">37 || LIMA: SANTIAGO DE SURCO (P. LUIS TEZZA)</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <br><br>
+                                    <div class="row">
+
+                                        <input type="hidden" name="crmdata" id="crmdata">
+                                        <input type="hidden" id="validcrm" value="0">
+                                    </div>
+                                    <!-- FIN DE CAMBIOS -->
+                                </fieldset>
+
+
+
+                                <fieldset class="oculta">
+                                    <legend>
+                                        <h3 class="lead font-weight-bold mt-2 mb-2 titulo-etiqueta">Datos de inscripción
+                                        </h3>
+                                    </legend>
+                                    <!-- INICIO DE CAMBIOS -->
+                                    <div class="row">
+                                        <!-- <div class="col-md-4 col-sm-12">
+                                            <label>Tipo Alumno<span class="text-danger">*</span></label>
+                                            <select name="tipo_alumno" required class="form-control mb-1"
+                                                id="id_tipo_alumno">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="15">PV || PRIMERA VEZ</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>Campus<span class="text-danger">*</span></label>
+                                            <select name="campus" required
+                                                onchange="carga_combos(&quot;id_nivel&quot;,&quot;niveles&quot;, [this.value,&quot;NO&quot;], [&quot;id_niveles__clave&quot;, &quot;id_niveles__descripcion&quot;] );"
+                                                class="form-control mb-1" id="id_campus">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">UDD || UNIVERSIDAD DEL DESARROLLO</option>
+
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Nivel<span class="text-danger">*</span>
+                                                <span id="id_nivel_loading"></span>
+                                            </label>
+                                            <select name="nivel" required
+                                                onchange="carga_combos(&quot;id_programa&quot;, &quot;programas&quot;, [id_campus.value,this.value, &quot;NO&quot;], [&quot;clave&quot;, &quot;descripcion&quot;] ); "
+                                                class="selectpicker form-control" data-live-search="true"
+                                                title="Seleccione una opción" id="id_nivel">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">BOOTCAMPS</option>
+
+                                                <option value="2">PREGRADOS</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>Tipo Admisión<span class="text-danger">*</span></label>
+                                            <select name="tipo_admision" required class="form-control mb-1"
+                                                id="id_tipo_admision">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="29">PV || PRIMERA VEZ</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Programa de interés<span class="text-danger">*</span>
+                                                <span id="id_programa_loading"></span>
+                                            </label>
+                                            <select name="programa" required
+                                                onchange="carga_combos(&quot;id_periodo&quot;,&quot;periodos&quot;, [id_campus.value,id_nivel.value,&quot;SI&quot;], [&quot;clave&quot;, &quot;descripcion&quot;] ); autocompleta_facultad(this.value,&quot;id_facultad&quot;)"
+                                                class="selectpicker form-control" data-show-subtext="true"
+                                                data-live-search="true" title="Seleccione una opción" id="id_programa">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="53VT-2500000">BOOTCAMP DESARROLLO WEB FULL STACK</option>
+                                        
+                                                <option value="53VV-2400000">BOOTCAMP DISEÑO UX UI</option>
+                                            
+                                                <option value="53FE-2500000">BOOTCAMP CIENCIA DE DATOS E IA</option>
+                                            
+                                                <option value="53U3-2600000">BOOTCAMP CIBERSEGURIDAD</option>
+                                            
+                                                <option value="53MW-2500000">BOOTCAMP APPS MULTIPLATAFORMA</option>
+                                            
+                                                <option value="53AI-2400000">BOOTCAMP ECOMMERCE MANAGEMENT</option>
+<!--  -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Modalidad<span class="text-danger">*</span>
+                                                <span id="id_modalidad_loading"></span>
+                                            </label>
+                                            <select name="modalidad" required class="form-control mb-1"
+                                                id="id_modalidad">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">1 || EXAMEN DE ADMISION</option>
+
+                                                <option value="2">5 || PRIMEROS PUESTOS</option>
+
+                                                <option value="3">D || TERCIO SUPERIOR</option>
+
+                                                <option value="4">F || GRADUADOS O TITULADOS</option>
+
+                                                <option value="5">H || REGULAR</option>
+
+                                                <option value="6">T || GRADUADO UCSS</option>
+
+                                                <option value="8">O || CENTRO-PRE INGRESO CONTINUO</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+
+                                        <!-- <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Facultad<span class="text-danger">*</span>
+                                                <span id="id_facultad_loading"></span>
+                                            </label>
+                                            <select name="facultad" required class="form-control mb-1" id="id_facultad">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">A || CIENCIAS ECONOMICAS Y COMERCIALES</option>
+
+                                                <option value="2">B || CIENCIAS DE LA EDUCACION Y HUMANIDADES</option>
+
+                                                <option value="3">C || CIENCIAS DE LA SALUD</option>
+
+                                                <option value="4">D || INGENIERIA</option>
+
+                                                <option value="5">E || INGENIERIA AGRARIA</option>
+
+                                                <option value="6">G || DERECHO Y CIENCIAS POLITICAS</option>
+
+                                                <option value="7">F || ESCUELA DE POSGRADO</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Periodo<span class="text-danger">*</span>
+                                                <span id="id_periodo_loading"></span>
+                                            </label>
+                                            <select name="periodo" required
+                                                onchange="carga_combos(&quot;id_inicio_clases&quot;,&quot;inicio_clases&quot;,[id_campus.value,id_nivel.value,id_programa.value,this.value,&quot;SI&quot;], [&quot;fecha_inicio&quot;, &quot;fecha_fin&quot;])"
+                                                class="selectpicker form-control" data-show-subtext="true"
+                                                data-live-search="true" title="Seleccione una opción" id="id_periodo">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">2024 || 01/01/2024 - 19/09/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <!-- <option value="2">P1 || 04/12/2023 - 03/06/2024 || 01 || VENTAS</option>
+
+                                                <option value="3">2023 || 04/12/2023 - 03/06/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="4">20230 || 11/12/2023 - 22/04/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="5">20232B || 11/12/2023 - 22/04/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="6">20232C || 04/12/2023 - 03/06/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="7">20241A || 02/01/2024 - 02/04/2024 || 01 || VENTAS
+                                                </option>
+
+                                                <option value="8">20241A || 02/01/2024 - 02/04/2024 || 01 || VENTAS
+                                                </option> -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Inicio Clases<span class="text-danger">*</span>
+                                                <span id="id_inicio_clases_loading"></span>
+                                            </label>
+                                            <select name="inicio_clases" required
+                                                onchange="carga_combos(&quot;id_plan_descuentos&quot;,&quot;paquetes&quot;, [id_campus.value,id_nivel.value,id_programa.value,&quot;SI&quot;], [&quot;nombre&quot;, &quot;descripcion&quot;] );"
+                                                class="selectpicker form-control" data-show-subtext="true"
+                                                data-live-search="true" title="Seleccione una opción"
+                                                id="id_inicio_clases">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="3">2023-09-19 - 2023-09-19</option>
+
+                                                <!-- <option value="4">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="5">2023-12-04 - 2024-06-03</option>
+
+                                                <option value="7">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="8">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="9">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="10">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="11">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="12">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="13">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="14">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="15">2023-12-04 - 2024-06-03</option>
+
+                                                <option value="16">2023-12-04 - 2024-06-03</option>
+
+                                                <option value="17">2023-12-04 - 2024-06-03</option>
+
+                                                <option value="18">2023-09-21 - 2023-09-21</option>
+
+                                                <option value="19">2023-09-19 - 2023-09-19</option>
+
+                                                <option value="20">2023-12-04 - 2024-06-03</option>
+
+                                                <option value="21">2023-12-11 - 2024-04-22</option>
+
+                                                <option value="22">2023-12-11 - 2024-04-22</option>
+
+                                                <option value="23">2023-12-11 - 2024-04-22</option>
+
+                                                <option value="24">2023-12-11 - 2024-04-22</option>
+
+                                                <option value="25">2023-12-11 - 2024-04-22</option>
+
+                                                <option value="26">2024-01-01 - 2024-06-10</option> -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Paquete<span class="text-danger">*</span>
+                                                <span id="id_plan_descuentos_loading"></span>
+                                            </label>
+                                            <select name="plan_descuentos" required
+                                                onchange="carga_combos(&quot;id_jornada&quot;,&quot;jornadas&quot;,[this.value,&quot;SI&quot;], [&quot;id_jornada__clave&quot;, &quot;id_jornada__descripcion&quot;]);"
+                                                class="selectpicker form-control" data-show-subtext="true"
+                                                data-live-search="true" title="Seleccione una opción"
+                                                id="id_plan_descuentos">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">PAGO BOOTCAMP FULL STACK 2024</option>
+
+                                                <!-- <option value="2">PAGO MATRICULA CONTABILIDAD ONLINE</option>
+
+                                                <option value="3">PAGO MATRICULA ECONOMIA ONLINE</option>
+
+                                                <option value="4">PAGO MATRICULAPSICOLOGIA ONLINE</option>
+
+                                                <option value="5">PAGO MATRICULA NUTRICIÓN Y DIETÉTICA ONLINE</option>
+
+                                                <option value="6">PAGO MATRICULA DERECHO ONLINE</option>
+
+                                                <option value="7">PAGO MATRICULA MAESTRÍA EN ADMINISTARCIÓN PÚBLICA
+                                                    ONLINE</option>
+
+                                                <option value="8">PAGO MATRICULA MAESTRÍA EN ADMINISTARCIÓN DE NEGOCIOS
+                                                    Y FINANZAS INTERNACIONALES -MBA INTERNACIONAL ONLINE</option>
+
+                                                <option value="9">PAGO MATRICULA MAESTRÍA EN GESTIÓN E INNOVACIÓN
+                                                    EDUCATIVA ONLINE</option>
+
+                                                <option value="10">PAGO MATRICULA MAESTRÍA EN BIOÉTICA Y DERECHO ONLINE
+                                                </option>
+
+                                                <option value="11">PAGO MATRICULA MAESTRÍA EN PSICOPEDAGOGÍA Y
+                                                    ORIENTACIÓN TUTORIAL EDUCATIVA ONLINE</option>
+
+                                                <option value="12">PRUEBA AGOSTO</option>
+
+                                                <option value="13">PRUEBA DIC</option> -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Jornada<span class="text-danger">*</span>
+                                                <span id="id_jornada_loading"></span>
+                                            </label>
+                                            <select name="jornada" required onchange="descripcion_paquetes()"
+                                                class="selectpicker form-control" data-show-subtext="true"
+                                                data-live-search="true" title="Seleccione una opción" id="id_jornada">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">UDD COMP || BOOTCAMPS</option>
+
+                                                <!-- <option value="2">1MC7 || JORNADA COMPLETA 7 MATERIAS</option> -->
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="col-md-4 col-sm-12 selectpicker_validation">
+                                            <label>
+                                                Filial<span class="text-danger">*</span>
+                                                <span id="id_filial_loading"></span>
+                                            </label>
+                                            <select name="filial" required class="form-control mb-1" id="id_filial">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="1">01 || LIMA: LOS OLIVOS</option>
+
+                                                <option value="2">02 || FILIAL HUAURA: HUACHO, VEGUETA</option>
+
+                                                <option value="3">03 || FILIAL ATALAYA</option>
+
+                                                <option value="4">04 || FILIAL RIOJA: NUEVA CAJAMARCA</option>
+
+                                                <option value="5">05 || FILIAL TARMA</option>
+
+                                                <option value="6">06 || FILIAL MORROPON: CHULUCANAS</option>
+
+                                                <option value="7">37 || LIMA: SANTIAGO DE SURCO (P. LUIS TEZZA)</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="row">
+
+                                        <input type="hidden" name="crmdata" id="crmdata">
+                                        <input type="hidden" id="validcrm" value="0">
+                                    </div>
+                                    <!-- FIN DE CAMBIOS -->
+                                </fieldset>
+
+                                <!--Descripción del plan que comprara el alumno-->
+                                <div class="d-none mt-2" id="descripcion_paquetes">
+                                    <h3 class="lead font-weight-bold mb-2 titulo-etiqueta">Descripción de paquetes y
+                                        accesorios</h3>
+
+                                    <div id="loading_paquetes">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="spinner-grow text-warning" role="status"
+                                                style="width: 3rem; height: 3rem;">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive d-none" id="loading_table">
+                                        <table class="table table-sm table-bordered" id="table_detalle">
+                                            <thead class="table-paquetes">
+                                                <tr>
+                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">Precio</th>
+                                                    <th scope="col">Descuento</th>
+                                                    <th scope="col">Precio con descuento</th>
+                                                    <th scope="col">Pagar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido_body">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <input type="submit" id="btn_guardar" value="Guarda inscripción nueva"
+                                    class="btn btn-custom btn-block mt-4">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    let telefono_movil = document.querySelector("#id_telefono_movil")
+                    let lada_movil = document.getElementById("id_lada_movil");
+                    let msg_movil = document.querySelector('#msg_movil')
+                    validateErrorPhone(telefono_movil, lada_movil, msg_movil)
+
+                    let telefono_casa = document.querySelector("#id_telefono_casa")
+                    let lada_casa = document.getElementById("id_lada_casa");
+                    let msg_casa = document.querySelector('#msg_casa')
+                    validateErrorPhone(telefono_casa, lada_casa, msg_casa)
+
+                    function autocompleta_facultad(value, tag_salida) {
+
+                        const csrftoken = getCookie('csrftoken');
+                        let url = "/inscripcion/auto_complete_facultad/"
+                        var select = document.getElementById(tag_salida);
+                        select.innerHTML = ""
+                        const options = {
+                            method: "POST",
+                            headers: {
+                                'X-CSRFToken': csrftoken,
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                'programa': value,
+                            })
+                        };
+
+                        fetch(url, options)
+                            .then((response) => {
+                                return response.json();
+                            })
+                            .then((data) => {
+                                select.innerHTML = data
+                            })
+                    }
+                    $(document).ready(function () {
+                        let campus = $('#id_campus').val();
+                        $("#id_programa").html("")
+                        $("#id_periodo").html("")
+                        $("#id_inicio_clases").html("")
+                        $("#id_plan_descuentos").html("")
+                        $("#id_jornada").html("")
+                        $("#id_nivel").html("")
+
+                        //carga_combos('id_nivel','niveles',campus)
+                    });
+
+
+                    //Función para validar una identidad
+                    function identidadValida(identidad) {
+                        var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
+                            validado = identidad.match(re);
+
+                        if (!validado)  //Coincide con el formato general?
+                            return true; //parchado temporal	
+                        return true; //Validado
+                    }
+
+                    $("#id_nivel").change(function () {
+                        $("#descripcion_paquetes").removeClass("d-block");
+                        $("#descripcion_paquetes").addClass("d-none");
+                        $("#id_inicio_clases").val("")
+                        //vacia_combos_selectpicker(["id_periodo", "id_inicio_clases","id_plan_descuentos", "id_jornada"])
+                    })
+                    $("#id_programa").change(function () {
+                        $("#descripcion_paquetes").removeClass("d-block");
+                        $("#descripcion_paquetes").addClass("d-none");
+                        $("#id_inicio_clases").val("")
+                        //vacia_combos_selectpicker(["id_periodo", "id_inicio_clases","id_plan_descuentos", "id_jornada"])
+                    })
+
+                    function vacia_combos_selectpicker(tags_arrays) {
+                        for (tag in tags_arrays) {
+                            $("#" + tags_arrays[tag]).val($("#" + tags_arrays[tag] + " option:first").val());
+                            $("#" + tags_arrays[tag]).selectpicker('refresh');
+                        }
+
+                    }
+
+                    /**
+                    * Nos muestra la descripción del paquete en una tabla
+                    */
+                    function descripcion_paquetes() {
+
+                        $("#descripcion_paquetes").addClass("d-block");
+                        $("#descripcion_paquetes").removeClass("d-none");
+
+                        $("#loading_paquetes").addClass("d-block");
+                        $("#loading_paquetes").removeClass("d-none");
+
+                        $("#loading_table").addClass("d-none");
+                        $("#loading_table").removeClass("d-block");
+
+                        $("#contenido_body").empty();
+
+                        let val = $('#id_plan_descuentos').val();
+                        let campus = $('#id_campus').val();
+                        let nivel = $('#id_nivel').val();
+                        let programa = $('#id_programa').val();
+                        let periodo = $('#id_periodo').val();
+                        let atts = $('#id_jornada').val();
+                        if (val != null && val != "" && val != undefined) {
+                            let respuesta = $.ajax({
+                                url: '/paquete/plan_descripcion/',
+                                method: "GET",
+                                data: {
+                                    'id': val,
+                                    'campus': campus,
+                                    'nivel': nivel,
+                                    'programa': programa,
+                                    'periodo': periodo,
+                                    'jornada': atts,
+                                },
+                                dataType: "json",
+                            });
+
+                            respuesta.done(function (response) {
+                                if (response.code == '501') {
+                                    $("#descripcion_paquetes").removeClass("d-block");
+                                    $("#descripcion_paquetes").addClass("d-none");
+                                }
+                                else if (response.code == '200') {
+                                    $("#descripcion_paquetes").removeClass("d-none");
+                                    $("#descripcion_paquetes").addClass("d-block");
+
+                                    moneda = response['moneda']
+                                    if (moneda == 'MXN') {
+                                        prefijo = '$'
+                                    } else {
+                                        prefijo = ''
+                                    }
+                                    if (response.nombre_programa.split('-').length >= 2) {
+                                        nombre = response.nombre_programa.split('-')[0];
+                                    } else {
+                                        nombre = response.nombre_programa;
+                                    }
+
+                                    accesorios = response['accesorios'];
+                                    let paquete = [
+                                        nombre,
+                                        "<label id='p_programa' class='precio_estilo'>" + response['precio_prog'] + ' ' + moneda + "</label>",
+                                        "<label id='p_programa' class='precio_estilo'>" + response['descuento'] + ' ' + moneda + "</label>",
+                                        "<label id='p_programa' class='precio_estilo'>" + response['precio_prog_desc'] + ' ' + moneda + "</label>",
+                                        "<span class='badge badge-warning'>Pagos</span>" + " " + response['num_pago'],
+                                    ]
+                                    llenar_tabla("table_detalle", paquete)
+
+                                    if (accesorios != 'No existen accesorios para este plan') {
+                                        $('#detalle_accesorio').removeClass("d-none")
+                                        $('#detalle_accesorio').addClass("d-block")
+
+                                        let etiqueta = [
+                                            "<span class='badge badge-warning'>Detalle Accesorio</span>", "", "", "", "",
+                                        ]
+                                        llenar_tabla("table_detalle", etiqueta)
+
+                                        for (let i in accesorios) {
+
+                                            if (accesorios[i].tipo_desc == 2) {
+                                                var descuento_tmp = String(parseFloat(accesorios[i].descuento).toFixed(0)) + '%';
+                                            }
+                                            else {
+                                                var descuento_tmp = "<label id='p_programa' class='precio_estilo'>" + accesorios[i].descuento + ' ' + moneda + "</label>";
+                                            }
+
+                                            let accesorios_obj = [
+                                                accesorios[i].nombre,
+                                                "<label id='p_programa' class='precio_estilo'>" + accesorios[i].precio + ' ' + moneda + "</label>",
+                                                descuento_tmp,
+                                                "<label id='p_programa' class='precio_estilo'>" + accesorios[i].precio_desc + ' ' + moneda + "</label>",
+                                                "<span class='badge badge-warning'>Mes</span>" + " " + accesorios[i].mes,
+                                            ]
+                                            llenar_tabla("table_detalle", accesorios_obj)
+                                        }
+
+                                        $("#loading_paquetes").removeClass("d-block");
+                                        $("#loading_paquetes").addClass("d-none");
+                                        $("#loading_table").removeClass("d-none");
+                                        $("#loading_table").addClass("d-block");
+
+                                    }
+                                    else {
+                                        $("#loading_paquetes").removeClass("d-block");
+                                        $("#loading_paquetes").addClass("d-none");
+                                        $("#loading_table").removeClass("d-none");
+                                        $("#loading_table").addClass("d-block");
+
+                                    }
+                                    accesorios_agregar = response['accesorios_agregar'];
+                                    if (accesorios_agregar) {
+                                        $('#detalle_accesorio').removeClass("d-none")
+                                        $('#detalle_accesorio').addClass("d-block")
+
+                                        let etiqueta = [
+                                            "<span class='badge badge-warning'>Accesorio agregado al pago matrícula</span>", "", "", "", "",
+                                        ]
+                                        llenar_tabla("table_detalle", etiqueta)
+
+                                        for (let i in accesorios_agregar) {
+
+                                            if (accesorios_agregar[i].tipo_desc == 2) {
+                                                var descuento_tmp_agregar = String(parseFloat(accesorios[i].descuento).toFixed(0)) + '%';
+                                            }
+                                            else {
+                                                var descuento_tmp_agregar = "<label id='p_programa' class='precio_estilo'>" + accesorios_agregar[i].descuento + ' ' + moneda + "</label>";
+                                            }
+
+                                            let accesorios_obj = [
+                                                accesorios_agregar[i].nombre,
+                                                "<label id='p_programa' class='precio_estilo'>" + accesorios_agregar[i].precio + ' ' + moneda + "</label>",
+                                                descuento_tmp_agregar,
+                                                "<label id='p_programa' class='precio_estilo'>" + accesorios_agregar[i].precio_desc + ' ' + moneda + "</label>",
+                                                "<span class='badge badge-warning'>Mes</span>" + " " + accesorios_agregar[i].mes,
+                                            ]
+                                            llenar_tabla("table_detalle", accesorios_obj)
+                                        }
+
+                                        $("#loading_paquetes").removeClass("d-block");
+                                        $("#loading_paquetes").addClass("d-none");
+                                        $("#loading_table").removeClass("d-none");
+                                        $("#loading_table").addClass("d-block");
+
+                                    }
+                                    else {
+                                        $("#loading_paquetes").removeClass("d-block");
+                                        $("#loading_paquetes").addClass("d-none");
+                                        $("#loading_table").removeClass("d-none");
+                                        $("#loading_table").addClass("d-block");
+
+                                    }
+                                }
+                                else {
+                                    $("#descripcion_paquetes").removeClass("d-block");
+                                    $("#descripcion_paquetes").addClass("d-none");
+                                }
+                            });
+
+                            respuesta.fail(function (jqXHR, textStatus) {
+                                console.log(textStatus)
+                            });
+                        }
+                    }
+
+                    /**
+                    * Funcion dimanica para llenar tablas, donde tag id es el id de la tabla
+                    * y datos obj son los datos que ocupan enviar en array
+                    * @param  {tag_id} array
+                    * @param  {datos_obj}
+                    */
+                    function llenar_tabla(tag_id, datos_obj) {
+                        let table = document.getElementById(tag_id),
+                            tbody = table.getElementsByTagName("tbody")[0];
+                        let pref = "col"
+                        let pos = 0
+                        let variables = {}
+                        let result = ""
+                        let row = document.createElement("tr")
+                        for (var i = 0; i < datos_obj.length; i++) {
+                            variables[pref + (i).toString()] = document.createElement("td");
+                        }
+
+                        for (var key in variables) {
+                            result = variables[key]
+                            result.innerHTML = datos_obj[pos]
+                            row.appendChild(result);
+                            pos++
+                        }
+                        if (datos_obj.length > 0) {
+                            tbody.appendChild(row);
+                        }
+                    }
+
+                    //Si existe valor en id_id_crm2 es por que fallo el formulario django
+                    //Se van cargando los valores de las listas dependientes
+                    if (document.getElementById("id_id_crm2").value != "") {
+                        //Correr campus
+                        if ($("#id_campus").val() != "") {
+                            select_val_campus = document.getElementById("id_campus").value;
+                        };
+
+
+                        let id_id_crm = document.getElementById("id_id_crm2").value;
+                        document.getElementById("id_crm").value = id_id_crm;
+                        async function get_data_crm2() {
+                            //SET INIT VARS
+                            let get_input_value = id_id_crm;
+                            let div_msg = document.getElementById('msg_error_crm');
+                            div_msg.style.color = 'red';
+                            div_msg.style.marginLeft = '25px';
+                            try {
+                                startLoading()
+                            } catch (error) {
+                                console.log(error);
+                            }
+
+                            //VALIDATE IF IS AN IDCRM
+                            if ((!validate_uuid(get_input_value) && !validate_positive_integer(get_input_value)) || !get_input_value) {
+                                div_msg.innerHTML = 'CRM NO VALIDO';
+                                stopLoading()
+                                return false;
+                            }
+
+                            //PREPARE PAYLOAD AND DO REQUEST
+                            let data_to_send = {
+                                idcrm: get_input_value,
+                            };
+
+                            let response = await fetch('/crm/get_crm_info/', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json;charset=utf-8',
+                                    'X-CSRFToken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh',
+                                },
+                                body: JSON.stringify(data_to_send)
+                            });
+
+                            //AWAIT RESPONSE
+                            let result = await response.json();
+                            //console.log("result.response", result)
+                            // FILL DATA
+                            if (result.status == 200) {
+
+                                let data_to_fill = result.response
+                                div_msg.innerHTML = '';
+                                //CHECK OPTION GENDER
+                                let sexo_c = '';
+                                if (data_to_fill.sexo_c == 'H') {
+                                    sexo_c = 1;
+                                } else if (data_to_fill.sexo_c == 'M') {
+                                    sexo_c = 2;
+                                }
+                                //FILL INPUTS
+                                //console.log("data_to_fill", data_to_fill)
+                                document.getElementById("validcrm").value = "1"
+                            } else {
+                                let msg = 'msj ' + result.response
+                                div_msg.innerHTML = 'Respuesta: ' + msg;
+                            }
+
+                            stopLoading()
+                        }
+
+                        get_data_crm2();
+
+
+                    }
+
+
+                    function check_config() {
+                        var nivel = $("#id_nivel").val();
+                        const url = "/inscripcion/checa_configuracion_valida/"
+                        $.post(url,
+                            { 'id_nivel': nivel, 'csrfmiddlewaretoken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh' }
+                        ).always(function (data) {
+                            if (data.valido) {
+                                document.getElementById("btn_guardar").disabled = false;
+                            } else {
+                                document.getElementById("btn_guardar").disabled = true;
+                                Swal.fire('' + data.msj, 'No se puede crear la solicitud', data.tipo)
+                            }
+
+                        });
+                    }
+
+                    $("#id_nivel").change(function () {
+                        check_config();
+
+                    });
+
+                    var primera_validacion = false;
+                    var segunda_validacion = false;
+
+                    $("#id_correo_confirmacion").focusout(function () {
+                        var correo1 = $('#id_correo').val();
+                        var correo2 = $("#id_correo_confirmacion").val();
+                        if (correo1 != correo2) {
+                            $(this).parent().removeClass("success text text-success");
+                            $(this).parent().addClass("alert alert-danger");
+                            $('#label_correo_confirmacion').removeClass("text text-success");
+                            $('#label_correo_confirmacion').text("Los correos no coinciden");
+                            $('#id_correo').focus();
+                        } else {
+                            $(this).parent().removeClass("alert alert-danger");
+                            $(this).parent().addClass("alert alert-success");
+                            $('#label_correo_confirmacion').text("");
+
+
+                        }
+                        var inputs = new Object();
+                        $("form#datos_usuario :input").each(function () {
+                            inputs[$(this).attr('name')] = $(this).val()
+                        });
+
+                        $.post('/inscripcion/check_existe_dato_usuario/',
+                            { 'inputs': JSON.stringify(inputs), 'id_crm': $("#id_crm").val(), 'accion': 'id_correo', 'csrfmiddlewaretoken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh' }
+                        ).always(function (data) {
+                            console.log("data correo", data)
+                            if (data.existe == "true") {
+                                Swal.fire({
+                                    title: ' ',
+                                    text: data.msj,
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#43A047',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Si',
+                                    cancelButtonText: 'No, cancelar'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                    }
+                                    else {
+                                        window.location.replace("/");
+                                    }
+                                });
+                            }
+                            else {
+
+                            }
+
+                        });
+
+                    });
+
+
+                    $("#id_identidad").focusout(function () {
+
+                        valida_identidad = identidadValida($(this).val().toUpperCase());
+                        if (valida_identidad) {
+                            var inputs = new Object();
+                            $("form#datos_usuario :input").each(function () {
+                                inputs[$(this).attr('name')] = $(this).val()
+                            });
+
+                            $.post('/inscripcion/check_existe_dato_usuario/',
+                                { 'inputs': JSON.stringify(inputs), 'id_crm': $("#id_crm").val(), 'accion': 'identidad', 'csrfmiddlewaretoken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh' }
+                            ).always(function (data) {
+                                if (data.existe == "true") {
+                                    Swal.fire({
+                                        title: ' ',
+                                        text: data.msj,
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#43A047',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Si',
+                                        cancelButtonText: 'No, cancelar'
+                                    }).then((result) => {
+                                        if (!result.isConfirmed) {
+                                            window.location.replace("/");
+                                        }
+                                    });
+                                }
+                                else {
+
+                                }
+
+                            });
+                        } else {
+                            $(this).focus()
+                            Swal.fire('', "identidad no valida, por favor verifique su registro", "warning");
+                        }
+
+                    });
+
+                    $("#id_periodo").change(function () {
+                        id_campus = $("#id_campus").val();
+                        id_nivel = $("#id_nivel").val();
+                        id_periodo = $("#id_periodo").val();
+                        id_programa = $("#id_programa").val()
+                        $.post("/inscripcion/check_exists_inscripcion_equal/", {
+                            'id_campus': id_campus, 'id_nivel': id_nivel, 'id_programa': id_programa,
+                            'id_periodo': id_periodo, object_pk: '', 'email': $("#id_correo").val(), 'csrfmiddlewaretoken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh'
+                        }).always(function (data) {
+                            if (JSON.parse(data).existe_inscricpion == true) {
+                                Swal.fire({
+                                    title: ' ',
+                                    text: 'Ya existe un incripcion con el mismo programa y periodo, por favor verifique sus datos.',
+                                    icon: 'warning',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#43A047',
+                                    confirmButtonText: 'Ok',
+                                }).then((result) => {
+                                    vacia_combos_selectpicker(["id_campus", "id_nivel", "id_programa", "id_periodo", "id_inicio_clases", "id_plan_descuentos", "id_jornada"]);
+                                });
+                            }
+
+                        });
+
+                    });
+
+                    $('#btn_guardar').click(function () {
+                        $('#btn_guardar').attr("disabled", true);
+                        var inputs = new Object();
+                        $("form#datos_usuario :input").each(function () {
+                            inputs[$(this).attr('name')] = $(this).val()
+                        });
+
+                        $.post('/inscripcion/check_existe_dato_usuario/',
+                            { 'inputs': JSON.stringify(inputs), 'id_crm': $("#id_crm").val(), 'accion': 'todos', 'csrfmiddlewaretoken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh' }
+                        ).always(function (data) {
+                            if (data.existe == "true") {
+                                $("#cancelado").val('SI');
+                                Swal.fire({
+                                    title: ' ',
+                                    text: data.msj,
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#43A047',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Si',
+                                    cancelButtonText: 'No, cancelar'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        /*startLoading();
+                                    	
+                                        $.post('/inscripcion/save_cancel_existe_dato_usuario/', 
+                                        {'inputs': JSON.stringify(inputs), 'csrfmiddlewaretoken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh'}
+                                        ).always(function(data) 
+                                        {
+                                            stopLoading();							
+                                            if (data.msj != '')
+                                            {
+                                                Swal.fire('',data.msj,data.tipo);
+                                            }
+                                            $("#datos_usuario").submit();														
+                                        });*/
+
+                                        $("#datos_usuario").submit();
+                                    }
+                                });
+
+                                $('#btn_guardar').attr("disabled", false);
+                            }
+                            else {
+                                $("#cancelado").val('NO')
+                                $("#datos_usuario").submit();
+                                $('#btn_guardar').attr("disabled", false);
+                            }
+
+                        });
+                    });
+
+                    //bloqueo de copiar pegar en correos
+                    $("#id_correo").on('paste', function (e) {
+                        e.preventDefault();
+                    })
+
+                    $("#id_correo").on('copy', function (e) {
+                        e.preventDefault();
+                    })
+
+                    $("#id_correo_confirmacion").on('paste', function (e) {
+                        e.preventDefault();
+                        $("#label_correo_confirmacion").html("No se puede utilizar la acción de pegar texto")
+                    })
+
+                    $("#id_correo_confirmacion").on('input', function (e) {
+                        $("#label_correo_confirmacion").html("")
+                    })
+
+                    $("#id_correo_confirmacion").on('copy', function (e) {
+                        e.preventDefault();
+                    })
+
+
+                    $('#id_plan_descripcion,  #inscripcion, #cargando, #no_e').hide();
+
+                    /* Cambia todos los input a mayusculas*/
+                    $("html").find("input[type='text']").change(function () {
+                        temp = $(this).val().toUpperCase();
+                        $(this).val(temp);
+                    })
+
+                    $("#id_correo_confirmacion").change(function () {
+                        document.getElementById("overlay").style.display = "block";
+                        clave1 = $("#id_correo").val()
+                        clave2 = $("#id_correo_confirmacion").val()
+
+                        if (clave1 == clave2) {
+                            $("#Correo_confirmacion").removeClass("error").addClass("valid");
+                            error.textContent = '';
+                            //console.log("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
+                        }
+                        else {
+                            $("#Correo_confirmacion").removeClass("valid").addClass("error");
+                            error.textContent = 'Lo correos no coinciden.';
+                            //console.log("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo")
+                        }
+                        document.getElementById("overlay").style.display = "none";
+                    });
+                    $("#id_correo").change(function () {
+                        document.getElementById("overlay").style.display = "block";
+                        clave1 = $("#id_correo").val()
+                        clave2 = $("#id_correo_confirmacion").val()
+
+                        if (clave1 == clave2) {
+                            $("#Correo_confirmacion").removeClass("error").addClass("valid");
+                            error.textContent = '';
+                            //console.log("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
+                        }
+                        else {
+                            $("#Correo_confirmacion").removeClass("valid").addClass("error");
+                            error.textContent = 'Lo correos no coinciden.';
+                            //console.log("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo")
+                        }
+                        document.getElementById("overlay").style.display = "none";
+                    });
+
+
+                    function clearcrm() {
+                        $('#id_crm').val('');
+                        $('#crmdata').val('');
+                        $('#validcrm').val('0');
+
+                        let lada_movil = document.getElementById("id_lada_movil");
+                        let lada_casa = document.getElementById("id_lada_casa");
+                        $("#datos_usuario")[0].reset();
+                        lada_movil.value = lada_movil.value
+                        lada_casa.value = lada_casa.value
+                    }
+
+                    function formatdate(date) {
+                        var date_trim = date.replace(/ /g, '')
+                        return (new Date(date_trim).toJSON().slice(0, 10).split('-').reverse().join('-'));
+                    }
+
+                    function validate_uuid(s) {
+                        let regxp = "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
+                        return s.match(regxp);
+                    }
+                    function validate_positive_integer(str) {
+                        var n = Math.floor(Number(str));
+                        return n !== Infinity && String(n) === str && n >= 0;
+                    }
+                    function truncateString(str, num) {
+                        if (str) {
+                            if (str.length > num) {
+                                return str.slice(0, num);
+                            } else {
+                                return str;
+                            }
+                        } else {
+                            return "";
+                        }
+                    }
+
+                    async function get_data_crm() {
+                        //SET INIT VARS
+                        let get_input_value = document.getElementById('id_crm').value;
+                        let div_msg = document.getElementById('msg_error_crm');
+                        div_msg.style.color = 'red';
+                        div_msg.style.marginLeft = '25px';
+                        //document.getElementById("overlay").style.display = "block";
+                        startLoading()
+                        //VALIDATE IF IS AN IDCRM
+                        if ((!validate_uuid(get_input_value) && !validate_positive_integer(get_input_value)) || !get_input_value) {
+                            div_msg.innerHTML = 'CRM NO VALIDO';
+                            stopLoading()
+                            return false;
+                        }
+
+                        //PREPARE PAYLOAD AND DO REQUEST
+                        let data_to_send = {
+                            idcrm: get_input_value,
+                        };
+
+                        let response = await fetch('/crm/get_crm_info/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json;charset=utf-8',
+                                'X-CSRFToken': 'wR3h2PyRUePftzvYDk5L16niMItw0Izwm5ibQD1A1EHSuy8dQ7bCmedAjNFob8dh',
+                            },
+                            body: JSON.stringify(data_to_send)
+                        });
+
+                        //AWAIT RESPONSE
+                        let result = await response.json();
+                        //console.log("result.response", result)
+                        // FILL DATA
+                        if (result.status == 200) {
+
+                            let data_to_fill = result.response
+                            div_msg.innerHTML = '';
+                            //CHECK OPTION GENDER
+                            let sexo_c = '';
+                            if (data_to_fill.sexo_c == 'M') {
+                                sexo_c = 2;
+                            } else if (data_to_fill.sexo_c == 'F') {
+                                sexo_c = 1;
+                            }
+                            //FILL INPUTS
+                            console.log("data_to_fill", data_to_fill)
+                            document.getElementById("id_primer_nombre").value = data_to_fill.first_name;
+                            document.getElementById("id_segundo_nombre").value = '';
+                            document.getElementById("id_apellido_paterno").value = data_to_fill.last_name;
+                            document.getElementById("id_apellido_materno").value = data_to_fill.ap_mat_c || "";
+                            document.getElementById("id_genero").value = sexo_c;
+                            document.getElementById("id_fecha_nacimiento").value = truncateString(data_to_fill.birthdate, 10);
+                            document.getElementById("id_identidad").value = data_to_fill.id_identidad;//data_to_fill.nip_c;
+                            document.getElementById("id_correo").value = data_to_fill.email1;
+                            document.getElementById("id_correo_alternativo").value = data_to_fill.email2;
+                            //document.getElementById("id_correo_confirmacion").value = data_to_fill.email1;
+                            document.getElementById("id_telefono_casa").value = data_to_fill.phone_home;
+                            document.getElementById("id_telefono_movil").value = data_to_fill.phone_mobile;
+                            document.getElementById("validcrm").value = "1"
+                            document.getElementById("id_telefono_movil").focus();
+                        } else {
+                            let msg = result.response
+                            div_msg.innerHTML = 'Respuesta: ' + msg;
+                        }
+
+                        stopLoading()
+                    }
+
+                </script>
+
+
+
+                <script>
+                    let form_datosusuario = document.getElementById('datos_usuario');
+                    form_datosusuario.onsubmit = function () {
+                        startLoading();
+                        var form = $("#datos_usuario")
+                        if (form[0].checkValidity() === false) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                            form.find(":invalid").first().focus();
+
+                            let form_tmp = document.getElementById('datos_usuario');
+                            const selectpickers = form_tmp.getElementsByClassName('selectpicker');
+                            for (let i = 0; i < selectpickers.length; i++) {
+                                const selectpicker = selectpickers[i];
+                                const selectpickerContainer = selectpicker.parentElement;
+                                const selectedOption = selectpicker.querySelector('option:checked');
+                                if (!selectedOption.value) {
+                                    selectpickerContainer.classList.add('is-invalid');
+                                    selectpickerContainer.classList.remove('is-valid');
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                }
+                                else {
+                                    selectpickerContainer.classList.remove('is-invalid');
+                                    selectpickerContainer.classList.add('is-valid');
+                                }
+                            }
+
+                            stopLoading();
+                        }
+                        else {
+                            return true
+                        }
+                        form.addClass('was-validated')
+                        return false;
+                    }
+                </script>
+
+
+            </div>
+        </div>
+    </div> <!-- FIN CUERPO -->
+
+    <div id="overlay" class="overlay">
+        <div class="dotsload text-center">
+            <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages backend -->
+
+
+    <!-- --------------------------SCRIPTS EXTRAS------------------------ -->
+    <script src="/static/core/js/popper.min.js"></script>
+    <script type="text/javascript" src="/static/core/js/jquery.validate.min.js"></script>
+
+    <script src="/static/core/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/core/vendor/jquery/bootstrap-select.js"></script>
+    <script src="/static/core/js/utils.js?v=13"></script>
+
+
+
+    <script>
+        const mobileScreen = window.matchMedia("(max-width: 990px )");
+        $(document).ready(function () {
+            $(".dashboard-nav-dropdown-toggle").click(function () {
+                $(this).closest(".dashboard-nav-dropdown")
+                    .toggleClass("show")
+                    .find(".dashboard-nav-dropdown")
+                    .removeClass("show");
+                $(this).parent()
+                    .siblings()
+                    .removeClass("show");
+            });
+            $(".menu-toggle").click(function () {
+                if (mobileScreen.matches) {
+                    $(".dashboard-nav").toggleClass("mobile-show");
+                } else {
+                    $(".dashboard").toggleClass("dashboard-compact");
+                }
+            });
+        });
+
+        function abrir_modal_new(url) {
+            fetch(url)
+                .then(function (response) {
+                    return response.text();
+                })
+                .then(function (body) {
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(body, 'text/html');
+                    document.querySelector('#ventana_modal_new').innerHTML = doc.querySelector('div').innerHTML;
+                    let scripts = document.getElementById('ventana_modal_new')
+                    executeScriptElements(scripts)
+
+                    const myModal = new bootstrap.Modal(document.getElementById('ventana_modal_new'))
+                    myModal.show()
+                });
+            return false;
+        };
+
+        function cerrar_modal_new() {
+            const modalElement = document.getElementById('ventana_modal_new');
+            modalElement.style.display = 'none';
+            const modalBackdrop = document.querySelector('.modal-backdrop');
+            if (modalBackdrop) {
+                modalBackdrop.parentNode.removeChild(modalBackdrop);
+            }
+        };
+
+        function executeScriptElements(containerElement) {
+            const scriptElements = containerElement.querySelectorAll("script");
+            Array.from(scriptElements).forEach((scriptElement) => {
+                const clonedElement = document.createElement("script");
+
+                Array.from(scriptElement.attributes).forEach((attribute) => {
+                    clonedElement.setAttribute(attribute.name, attribute.value);
+                });
+
+                clonedElement.text = scriptElement.text;
+                scriptElement.parentNode.replaceChild(clonedElement, scriptElement);
+            });
+        }
+        function vaciar_errors_modal() {
+            // Obtener todos los divs con el atributo data-error
+            var divs = document.querySelectorAll("div[data-error]");
+
+            // Vaciar el contenido de los divs
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].textContent = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
